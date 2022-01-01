@@ -14,7 +14,7 @@ public class PersonneControlleur {
     @Autowired
     private PersonneService personneService;
 
-    @PostMapping("")
+    @PostMapping("/")
     public Personne save(@RequestBody Personne personne) {
         return personneService.ajouter(personne);
     }
