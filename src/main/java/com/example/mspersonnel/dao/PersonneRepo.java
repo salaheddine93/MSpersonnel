@@ -4,5 +4,5 @@ import com.example.mspersonnel.entites.Personne;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonneRepo extends JpaRepository<Personne,Long> {
-    public Personne findPersonneByNom(String nom);
+    public Personne findPersonneByNomUtilisateur(String nomUtilisateur);
 }

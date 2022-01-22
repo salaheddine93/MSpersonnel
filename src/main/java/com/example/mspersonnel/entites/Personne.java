@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Personne {
+public  class Personne {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
@@ -21,6 +21,7 @@ public abstract class Personne {
     private Boolean statusCompte;
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String motDePasse;
+    @Column(unique = true)
     private String nomUtilisateur;
     private Date dateInscription;
     @Enumerated(value = EnumType.STRING)

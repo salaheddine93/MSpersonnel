@@ -9,13 +9,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 
 @SpringBootApplication
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class MSpersonnelApplication implements CommandLineRunner {
+
     @Value("${spring.jpa.hibernate.ddl-auto}")
     String ddl;
 
@@ -33,7 +36,7 @@ public class MSpersonnelApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //if (ddl == "create"){
+        if ("create".equals(ddl)) {
             Admin admin = new Admin();
             admin.setId(null);
             admin.setNom("ADMIN");
@@ -73,5 +76,6 @@ public class MSpersonnelApplication implements CommandLineRunner {
             etudiant.setDateInscription(new Date());
             etudiant.setRole(Role.ETUDIANT);
             personneRepo.save(etudiant);
+        }
     }
 }
